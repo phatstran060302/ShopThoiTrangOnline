@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShopThoiTrangOnlineDemo.Entity;
 using ShopThoiTrangOnlineDemo.Services;
@@ -25,6 +26,7 @@ namespace ShopThoiTrangOnlineDemo.Controllers
             return Ok(result);
         }
         [HttpPost("productcategories")]
+        [Authorize]
 
         public async Task<IActionResult> CreateProductCategory([FromBody] ProductCategoryRequestModel productCategory)
         {

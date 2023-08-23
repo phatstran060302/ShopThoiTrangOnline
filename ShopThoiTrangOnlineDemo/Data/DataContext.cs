@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ShopThoiTrangOnlineDemo.Entity;
 namespace ShopThoiTrangOnlineDemo.Data
 {
 
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<User>
     {
         public DataContext()
         {
@@ -35,6 +36,7 @@ namespace ShopThoiTrangOnlineDemo.Data
         DbSet<ProductImage> ProductImages { get; set; }
         DbSet<Order> OrderEntities { get; set; }
         DbSet<OrderDetail> OrderDetailEntities { get; set; }
+        
 
     }
 }

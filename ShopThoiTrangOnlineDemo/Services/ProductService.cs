@@ -7,6 +7,8 @@ namespace ShopThoiTrangOnlineDemo.Services
     {
         public Task<ICollection<Product>> GetProducts();
         public Task CreateProduct(Product product);
+        public Task UpdateProduct(int id,Product product);
+        public Task<Product> GetProductById(int id);
 
     }
     public class ProductService : IProductService
@@ -24,10 +26,21 @@ namespace ShopThoiTrangOnlineDemo.Services
             return;
         }
 
+        public async Task<Product> GetProductById(int id)
+        {
+            return await _productEntityRepository.GetByIntId(id);
+        }
+
         public async Task<ICollection<Product>> GetProducts()
         {
             var listProduct = _productEntityRepository.GetAll();
             return listProduct.ToList();
+        }
+
+        public async Task UpdateProduct(int id,Product product)
+        {
+            await _productEntityRepository.Update(id, product);
+            return;
         }
     }
 }

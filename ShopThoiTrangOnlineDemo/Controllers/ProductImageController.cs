@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShopThoiTrangOnlineDemo.Entity;
 using ShopThoiTrangOnlineDemo.Services;
@@ -25,7 +26,7 @@ namespace ShopThoiTrangOnlineDemo.Controllers
             return Ok(result);
         }
         [HttpPost("productImages")]
-
+        [Authorize]
         public async Task<IActionResult> CreateProductImage([FromBody] ProductImageRequestModel ProductImage)
         {
             var mappedProductImage = _mapper.Map<ProductImage>(ProductImage);

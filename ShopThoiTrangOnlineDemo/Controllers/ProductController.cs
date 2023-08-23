@@ -32,11 +32,13 @@ namespace ShopThoiTrangOnlineDemo.Controllers
             return Ok("Created successfully");
         }
 
-        //[HttpPut("products")]
-        //public async Task<IActionResult> UpdateProduct(int id, ProductRequestModel model)
-        //{
-        //    await _productService.UpdateProduct(id, model);
-        //    return Ok();
-        //}
+        [HttpPut("products")]
+        public async Task<IActionResult> UpdateProduct(int id,[FromBody] ProductRequestModel updateProduct)
+        {
+            
+            var mappedProduct = _mapper.Map<Product>(updateProduct);
+            _productService.GetProductById(mappedProduct.Id);
+            return Ok("Update successfully");
+        }
     }
 }
